@@ -1,0 +1,178 @@
+git init 				        -> Initialize a Git repo (for new projects):
+		
+git clone <repository-URL> 			-> project ni thechukovadm GitHub nundi
+		
+git fetch 					-> if any new branch created in Remote, it will help you to get to know in your local that a new branch is created. One remote ni fetch chesthadi (default: origin)
+
+git remote update 				-> All remotes fetch chesthadi
+
+git pull	                                -> Fetch + Merge		
+		
+git checkout 				        -> if you want to switch to another branch, note: before checkout we have to fetch so that we can get newly created branches to our local.
+
+git checkout -b feature/login-page 		-> Create a New Branch (for a feature or bug fix)
+
+EG: Here we are checking out new feature/branch1 without checking out, but we get error becoz git doesn't new there is new branch created in remote. so we do checkout and then fetch
+
+git checkout <branchName>
+
+ DemoRepo (main)
+$ git checkout feature/branch1
+error: pathspec 'feature/branch1' did not match any file(s) known to git
+
+DemoRepo (main)
+$ git fetch origin
+From https://github.com/nathanisrael28/DemoRepo
+ * [new branch]      feature/branch1 -> origin/feature/branch1
+
+ DemoRepo (main)
+$ git checkout feature/branch1
+
+DemoRepo (feature/branch1)
+$ git status
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+git status 					 ->  Check Repo Status like which files got changed or committed or added to stage.
+
+git add <filename/folder/ . (dot for all folders)> -> Add Files to Staging
+
+git commit -m "Message" 	 		-> commit the changes
+	
+git push -u origin <BranchName> 		-> Push to Remote Repo First time only (set upstream)
+	
+git push 					 -> Pushes current branch to its tracked remote branch (Later pushes after first time )
+		
+git push origin <branchName> 			 -> Pushes the specified branch to the origin remote. Here branchName can be anything even Main also
+		
+git pull 					 -> Pull Changes from current branch to its tracked remote branch
+		
+git pull origin <branchName> 			-> pull changes the specified branch to the origin remote. Here branchName can be anything even Main also
+
+git merge <branch>        			-> Merge feature from the feature branch to current checkedout branch
+
+Merge Branches, here we are Merge feature branch into main
+------------------------------------------
+EG:
+ DemoRepo (feature/branch1)
+$ git checkout main
+
+ DemoRepo (main)
+$ git status
+
+ DemoRepo (main)
+$ git merge feature/login-page
+-------------------------------------------------------------------------
+
+git log 					-> Check Commit History Simple log
+
+git log --oneline                               -> One-line summary of comit history
+
+git reflog					-> Show HEAD movement history ; HEAD recent ga ekkadiki moveyindo chudadam
+
+----------------------------------------------------------------
+
+git reset <file> 				-> Undo Mistakes (Carefully!) Unstage a file
+
+git reset --soft HEAD~1 			-> Go back one commit (safe) without discarding your changes, Undo last commit (keep changes staged)
+
+git reset --hard HEAD~1				-> Undo last commit and discard changes
+
+git checkout -- <file>				-> Discard local changes
+
+-------------------------------------------------------------------------------------------------
+
+Stash Temporary Changes
+
+git stash                                       ->Save changes without committing:
+
+Stash is useful when someone ask you to fix some bug or work on other fetuare in priority, but you have done some changes here and commited but not pushed. 
+But with out push, we cant change to other branch checkout & work on it. So stash concept is came in to picture here stash will take the changes you made in the current branch
+and put it temporary storage and make undo commit change in the current branch. so then you can switch to other branch & work on it.
+
+git stash pop ->Get them back
+
+i.e once you have completed the priorty task on the branch and you have commited it and want to work on the previos branch you are working then what we have to do is checkout to the older 
+branch in which you Are previously working and then use "STASH POP" cmd This will take get changes which are saved in the temporary storage and it gives back to the working branch in the file.
+Then you can commit it push it.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+git diff   				-> Check changes before commit	
+
+git diff --cached  			-> Review what was staged		
+
+git diff origin/main  			-> Check if you're behind remote
+
+git diff filename.java                  -> You can also do a file-specific diff 
+--------------------------------------------------------------------------------------------
+
+======================================================================================================================================================================================
+
+FROM HERE IS CHATGPT VERSION IN ENGLIS + TENGLISH
+-------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Commands							        Functionality (English)							Functionality (Tenglish)
+git init 					->			Initialize a new Git repo    				 		Oka kotta Git project start cheyyadam
+git clone <url> 				->			Copy remote repo to local		             		Online repo ni download cheyyadam
+git status 					->			Show file status	                         		Yemi changes chesavo, stage aindaa ledaa telusukovadam
+git add <file> 					->			Stage a file	                             		Commit ki ready cheyyadam
+git add . 					->			Stage all files	                             		Anni modified files ni stage cheyyadam
+git commit -m "msg" 			        ->			Save changes with message			         		Message tho changes ni lock cheyyadam
+git log 					->			View commit history	                         		Evaru, eppudu, yela changes chesaro chudadam
+git log --oneline 				->			Short commit history		                 		Summary format lo commit history chudadam
+git diff 					->			Show unstaged changes	                     		Commit cheyyaka mundu chesina changes chudadam
+git diff --cached 				->			Show staged changes		                     		git add chesaka changes yela unnayo chudadam
+git diff origin/main 			        ->			Compare local with remote			         		Nuvvu remote daggara nunchi behind lo unnava chudadam
+git remote -v 					->			Show remote URLs	                         		Repo link e server tho connect aindho chudadam
+git remote update 				->			Fetch from all remotes		                 		Prathi remote repo nunchi changes update cheyyadam
+git fetch 					->			Download changes (no merge)	                 		Changes teesukoni merge cheyyakunda chudadam
+git pull 					->			Fetch + Merge	                             		Remote changes ni local branch lo kalupukovadam
+git push 					->			Upload commits to remote	                 		Mee changes remote repo ki pampadam
+git push -u origin <branch> 	                ->			Push + set upstream					         		Branch ni remote lo create cheyyadam & track cheyyadam
+git branch 					->			List branches	                             		Local branches anni chudadam
+git branch <name> 				->			Create new branch		                     		Kotha branch create cheyyadam
+git checkout <branch> 			        ->			Switch to branch			                 		Vere branch ki velladam
+git checkout -b <name> 			        ->			Create + switch branch			             		Kotha branch create chesi daaniki switch avvadam
+git switch <branch> 			        ->			Switch branches (new way)			         		New command to move to other branch
+git switch -c <name> 			        ->			Create + switch branch			             		Kotha branch create cheyyadam, switch cheyyadam
+git restore <file> 				->			Discard changes		                         		File lo recent changes ni cancel cheyyadam
+git restore --staged <file> 	                ->			Unstage a file					             		git add chesinadi cancel cheyyadam
+git merge <branch> 				->			Merge another branch		                 		Vere branch lo unna changes kalupukovadam
+git stash 					->			Temporarily save changes	                 		Commit cheyyakunda changes save cheyyadam
+git stash pop 					->			Apply stash	                                 		Save chesina changes malli apply cheyyadam
+git reset <file> 				->			Unstage a file		                         		git add chesina file ni back cheyyadam
+git reset --soft HEAD~1 		        ->			Undo commit (keep files)				     		Commit matrame undo, changes matram untayi
+git reset --hard HEAD~1 		        ->			Undo commit + delete changes				 		Commit kuda, changes kuda fullga delete cheyyadam
+git rm <file> 					->			Delete file and stage	                     		File ni delete cheyyadam and stage cheyyadam
+git clean -f 					->			Remove untracked files	                     		Git ki teliyani files ni delete cheyyadam
+git reflog 					->			Show HEAD movement history	                 		HEAD recent ga ekkadiki moveyindo chudadam
+git cherry-pick <commit> 		        ->			Apply specific commit				         		Vere branch lo commit ni ikkada apply cheyyadam
+git revert <commit> 			        ->			Undo commit safely			                 		Commit ki reverse commit create cheyyadam
+git rebase <branch> 			        ->			Replay commits on top			             		Changes ni vere branch meeda apply cheyyadam
+git rebase -i HEAD~3 			        ->			Interactive rebase			                 		Commits ni squash, reorder, edit cheyyadam
+git tag <name> 					->			Create tag (snapshot)	                     		Snapshot lekapote version ki tag pettadam
+git tag -a v1.0 -m "msg" 		        ->			Annotated tag				                 		Description tho version tag create cheyyadam
+git show <commit/tag> 			        ->			Show commit/tag details			             		Commit or tag yokka full details chudadam
+git blame <file> 				->			Who changed which line		                 		E line yevadu chesado, eppudu chesado chudadam
+git bisect 					->			Find bug commit via binary search	         		Yedanna bug introduce chesina commit ni kanukovadam
+git shortlog 					->			Summary of commits by author	             		Author wise summary of commits chudadam
+git describe 					->			Show nearest tag to current commit	         		Commit ki deggera unna tag info chudadam
+git archive 					->			Export repo as zip/tar	                     		Project ni zip or tar lo export cheyyadam
+git gc 						->			Clean up unnecessary files	                 		Git repo lo junk clean cheyyadam
+git fsck 					->			Check repo integrity	                     		Git database lo errors unte kanukovadam
+git worktree 					->			Use multiple working dirs	                 		Oke repo tho multiple folders lo work cheyyadam
+git submodule 					->			Embed another repo	                         		Repo lopala inko Git repo maintain cheyyadam
+git remote rename <old> <new> 	                ->			Rename a remote					             		Remote repo name marchadam
+git remote remove <name> 		        ->			Remove remote repo				             		Repo lo link aina remote ni delete cheyyadam
+
+git stash list				        ->                      Save chesina stash entries list chudadam
+git stash apply stash@{1}	                ->                      Specific stash apply cheyyadam
+git cherry					->                      Merged kaakapoyina commits chudadam
+git config --list			        ->                      Set chesina Git configurations anni chudadam
+
+
+
+
+
+
